@@ -12,9 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir uv
 
 # Copier les fichiers de projet pour que uv puisse lire tes dépendances
-# (pyproject.toml créé par `uv init`; si tu as un uv.lock, copie-le aussi)
 COPY pyproject.toml ./
-# COPY uv.lock ./
+COPY uv.lock ./        
 
 # Installer les deps définies par uv/pyproject
 RUN uv sync --frozen --no-dev
